@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>VidGen Ad Studio — AI-ready (Proxy)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">VidGen Ad Studio</div>
+    <div class="actions">
+      <button id="openGallery" class="btn">My Projects</button>
+      <button id="settingsBtn" class="btn alt">AI Settings</button>
+      <button id="downloadAll" class="btn">Download ZIP</button>
+    </div>
+  </div>
+
+  <main class="container">
+    <aside class="sidebar panel">
+      <h3>Create</h3>
+      <label>Prompt (for AI image & copy)</label>
+      <textarea id="aiPrompt" rows="3" placeholder="Describe product, scene, or mood"></textarea>
+      <label>Tone (for copy)</label>
+      <select id="tone">
+        <option value="professional">Professional</option>
+        <option value="friendly">Friendly</option>
+        <option value="luxury">Luxury</option>
+        <option value="funny">Funny</option>
+      </select>
+      <div class="row">
+        <button id="genCopy" class="btn">Generate Copy</button>
+        <button id="genImage" class="btn alt">Generate Image</button>
+      </div>
+
+      <hr/>
+      <h4>Manual fields</h4>
+      <label>Headline</label><input id="title" placeholder="Headline">
+      <label>Subheadline</label><input id="description" placeholder="Subheadline">
+      <label>CTA</label><input id="cta" placeholder="Shop now">
+      <div class="row">
+        <button id="applyBtn" class="btn">Apply to Canvas</button>
+        <button id="saveBtn" class="btn alt">Save locally</button>
+      </div>
+    </aside>
+
+    <section class="panel canvas">
+      <div id="adCanvas" class="ad-canvas"><div class="placeholder">No preview yet — generate or fill in fields, then Apply.</div></div>
+      <div class="controls">
+        <button id="insertGen" class="btn">Insert Generated</button>
+        <button id="exportPNG" class="btn alt">Export PNG</button>
+        <button id="exportHTML" class="btn">Download HTML</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-content panel">
+      <h3>AI Settings</h3>
+      <label>Proxy server base URL (recommended)</label>
+      <input id="proxyBase" placeholder="http://localhost:4000" />
+      <label>Or paste OpenAI key (developer/testing only — NOT secure)</label>
+      <input id="openaiKey" placeholder="sk-..." />
+      <div class="muted small">Proxy mode preferred. If both set, proxy is used. In-browser key is only for local testing.</div>
+      <div class="row" style="margin-top:12px">
+        <button id="saveSettings" class="btn">Save</button>
+        <button id="closeSettings" class="btn alt">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="galleryModal" class="modal hidden">
+    <div class="modal-content panel">
+      <h3>My Projects</h3>
+      <div id="galleryList"></div>
+      <div class="row" style="margin-top:12px">
+        <button id="closeGallery" class="btn alt">Close</button>
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
